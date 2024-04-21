@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cell',
@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class CellComponent {
   @Input()
   state: boolean = true;
+  @Output() stateEmitter = new EventEmitter<boolean>();
   die() {
     this.state = false;
   }
@@ -16,5 +17,6 @@ export class CellComponent {
   }
   toggleState() {
     this.state = !this.state;
+    this.stateEmitter.emit(this.state);
   }
 }

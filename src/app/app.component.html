@@ -1,9 +1,14 @@
 <div class="control">
-  <button>Start</button>
+  <button (click)="startInterval()">Start</button>
+  <button (click)="startcleanPage()">Start Clean</button>
+  <button (click)="randomize()">Randomize</button>
 </div>
 
 <div class="matrix">
   @for(cell of matrix; track $index){
-  <app-cell [state]="cell"></app-cell>
+  <app-cell
+    [state]="cell"
+    (stateEmitter)="changeSingleState($event, $index)"
+  ></app-cell>
   }
 </div>
